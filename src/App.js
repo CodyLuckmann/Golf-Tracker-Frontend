@@ -12,7 +12,15 @@ function App() {
     getAllCourses()
   },[]);
 
-  async function createCourse(){
+  async function updateCourse(pk, updateCourse){
+
+    let response =await axios.put(`http://127.0.0.1:8000/api/course/update/${pk}/`, updateCourse)
+    if(response.status === 200){
+      getAllCourses();
+    }
+  }
+  
+  async function createCourse(newCourse){
 
     let response = await axios.post('http://127.0.0.1:8000/api/course/', newCourse);
     if(response.status ===201){
@@ -28,6 +36,7 @@ function App() {
   return (
     <div>
       <h3>Golf Tracker</h3>
+      
     </div>
   );
 }
