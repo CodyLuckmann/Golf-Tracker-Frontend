@@ -38,4 +38,4 @@ const CourseForm = (props) => {
     );
 }
 
-export default CourseForm
+export default CourseForm;
