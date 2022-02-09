@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
+
+
 
 function App() {
+
+  const [course, setCourses] = useState([]);
+
+  useEffect(() =>{
+    getAllCourses()
+  },[]);
+
+  async function createCourse(){
+
+    let response = await axios.post('http://127.0.0.1:8000/api/course/', newCourse);
+    if(response.status ===201){
+      await getAllCourses();
+    }
+  }
+
+  async function getAllCourses(){
+
+    let response = await axios.get('http://127.0.0.1:8000/api/course/all/');
+    setCourses(response.data);
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h3>Golf Tracker</h3>
     </div>
   );
 }
