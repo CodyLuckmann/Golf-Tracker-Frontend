@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import LoginForm from './Components/LoginForm/LoginForm';
+import RegistrationForm from './Components/RegistraionForm/RegistrationForm';
+import NavBar from './Components/NavBar/NavBar';
+import jwt_decode from 'jwt-decode';
 
 
 
@@ -10,6 +15,11 @@ function App() {
 
   useEffect(() =>{
     getAllCourses()
+    const jwt = localStorage.getItem('token');
+      try{
+        const decodedUser = jwt_decode(jwt);
+        setUser(decodedUser);
+      } catch {}
   },[]);
 
   async function updateCourse(pk, updateCourse){
@@ -35,7 +45,14 @@ function App() {
   }
   return (
     <div>
-      <h3>Golf Tracker</h3>
+      <Router>
+        <NavBar user={user}/>
+        <Routes>
+          <Route path="/register" element={<RegistrationForm />}/>
+          <Route path="/login" element={<LoginForm />}/>
+        </Routes>
+      </Router>
+      
       
     </div>
   );
