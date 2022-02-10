@@ -24,7 +24,7 @@ const RegistrationForm = (props) => {
     };
 
     const handleUserName = (e) => {
-        setUserName(e.target.vaule)
+        setUserName(e.target.value)
     };
 
     const handleEmail = (e) => {
@@ -46,6 +46,8 @@ const RegistrationForm = (props) => {
                 middle_name: middle_name,
                 last_name: last_name,
             }
+            // Can I add explicitly
+        console.log("New user: ", newUser)
         let response = await axios.post('http://127.0.0.1:8000/api/auth/register/', newUser);
         window.location = '/login'
     };
