@@ -29,6 +29,9 @@ function NavBar({user}) {
                 }
                 {user &&
                     <React.Fragment>
+                        <li>
+                            <Link to='/courses'>Courses</Link>
+                        </li>
                         <button onClick={logout}>Log Out</button>
                     </React.Fragment>    
                 }
