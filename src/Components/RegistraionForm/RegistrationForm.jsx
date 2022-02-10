@@ -5,6 +5,7 @@ const RegistrationForm = (props) => {
 
     const [username, setUserName] = useState('');
     const [first_name, setFirstName] = useState('');
+    const [middle_name, setMiddleName] = useState('');
     const [last_name, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -12,6 +13,10 @@ const RegistrationForm = (props) => {
 
     const handleFirstName = (e) => {
         setFirstName(e.target.value)
+    };
+
+    const handleMiddleName = (e) => {
+        setMiddleName(e.target.value)
     };
 
     const handleLastName = (e) => {
@@ -57,6 +62,10 @@ const RegistrationForm = (props) => {
                 <label>First Name</label>
                 <input onChange={handleFirstName}
                 value={first_name} type='text'/>
+
+                <label>Middle Name</label>
+                <input onChange={handleMiddleName}
+                value={middle_name} type='text'/>
 
                 <label>Last Name</label>
                 <input onChange={handleLastName}
