@@ -5,7 +5,8 @@ import LoginForm from './Components/LoginForm/LoginForm';
 import RegistrationForm from './Components/RegistraionForm/RegistrationForm';
 import NavBar from './Components/NavBar/NavBar';
 import jwt_decode from 'jwt-decode';
-
+import DisplayCourse from './Components/DisplayCourse/DisplayCourse';
+// import CreateCourse from ''
 
 
 
@@ -14,6 +15,7 @@ function App() {
   const [course, setCourses] = useState([]);
 
   const [user, setUser] = useState(null);
+  
   useEffect(() =>{
     getAllCourses()
     const jwt = localStorage.getItem('token');
@@ -22,6 +24,14 @@ function App() {
         setUser(decodedUser);
       } catch {}
   },[]);
+
+  async function deleteCourse(pk){
+
+    let response = await axios.delete(`http://127.0.0.1:8000/api/course/delete/${pk}/`)
+    if(response.status ===204){
+      getAllCourses();
+    }
+  }
 
   async function updateCourse(pk, updateCourse){
 
@@ -47,11 +57,14 @@ function App() {
   return (
     <div>
       <Router>
-        <NavBar user={user}/>
+      <NavBar user={user}/>
         <Routes>
           <Route path="/register" element={<RegistrationForm />}/>
           <Route path="/login" element={<LoginForm />}/>
+          <Route path="/courses" element={<DisplayCourse course={course} getAllCourses={getAllCourses} updateCourse={updateCourse} deleteCourse={deleteCourse} />} />
         </Routes>
+        
+        
       </Router>
       
       
