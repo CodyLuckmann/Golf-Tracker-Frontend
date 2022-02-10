@@ -13,6 +13,7 @@ function App() {
 
   const [course, setCourses] = useState([]);
 
+  const [user, setUser] = useState(null);
   useEffect(() =>{
     getAllCourses()
     const jwt = localStorage.getItem('token');
