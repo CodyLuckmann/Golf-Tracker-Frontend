@@ -32,7 +32,7 @@ const LoginForm = (props) => {
     return (
         <div>
             <div>
-                <hi>Login</hi>
+                <h1>Login</h1>
             </div>
             <form>
                 <label>Username</label>
