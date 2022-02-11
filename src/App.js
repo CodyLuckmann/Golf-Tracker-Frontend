@@ -13,12 +13,13 @@ import DisplayCourse from './Components/DisplayCourse/DisplayCourse';
 function App() {
 
   const [course, setCourses] = useState([]);
+  const jwt = localStorage.getItem('token');
 
   const [user, setUser] = useState(null);
   
   useEffect(() =>{
     getAllCourses()
-    const jwt = localStorage.getItem('token');
+    
       try{
         const decodedUser = jwt_decode(jwt);
         setUser(decodedUser);
@@ -27,7 +28,7 @@ function App() {
 
   async function deleteCourse(pk){
 
-    let response = await axios.delete(`http://127.0.0.1:8000/api/course/delete/${pk}/`)
+    let response = await axios.delete(`http://127.0.0.1:8000/api/course/delete/${pk}`)
     if(response.status ===204){
       getAllCourses();
     }
@@ -35,7 +36,7 @@ function App() {
 
   async function updateCourse(pk, updateCourse){
 
-    let response =await axios.put(`http://127.0.0.1:8000/api/course/update/${pk}/`, updateCourse)
+    let response =await axios.put(`http://127.0.0.1:8000/api/course/update/${pk}`, updateCourse, {headers: {Authorization: 'Bearer ' + jwt}});
     if(response.status === 200){
       getAllCourses();
     }
@@ -43,7 +44,7 @@ function App() {
   
   async function createCourse(newCourse){
 
-    let response = await axios.post('http://127.0.0.1:8000/api/course/', newCourse);
+    let response = await axios.post('http://127.0.0.1:8000/api/course/', newCourse, {headers: {Authorization: 'Bearer ' + jwt}});
     if(response.status ===201){
       await getAllCourses();
     }
