@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import UpdateCourse from "../UpdateCourse/UpdateCourse";
 import SearchBar from '../SearchBar/SearchBar';
 import NineHoleForm from "../NineHoleForm/NineHoleForm";
+import { Link } from "react-router-dom";
 
 
 
@@ -55,9 +56,9 @@ const DisplayCourse = (props) => {
                         <td>{course.zip_code}</td>
                         <td>{course.nine_hole_par}</td>
                         <td>{course.eighteen_hole_par}</td>
-                        <button onClick={()=>showEdit(course)}>Edit Course</button>
+                        {/* <button onClick={()=>showEdit(course)}>Edit Course</button> */}
                         {/* <button onClick={()=>props.deleteCourse(course.id)}>Delete</button> */}
-                        <button onClick={()=>props.createPlayedHole(course.id)}>Add 9-Hole Round</button>
+                        <Link to='/addhole'><button> Add Hole</button></Link> 
                     </tr>
                     );
                 })}
