@@ -6,7 +6,7 @@ import RegistrationForm from './Components/RegistraionForm/RegistrationForm';
 import NavBar from './Components/NavBar/NavBar';
 import jwt_decode from 'jwt-decode';
 import DisplayCourse from './Components/DisplayCourse/DisplayCourse';
-// import CreateCourse from ''
+import CourseForm from './Components/CreateCourse/CreateCourse';
 
 
 
@@ -19,7 +19,7 @@ function App() {
   
   useEffect(() =>{
     getAllCourses()
-    
+
       try{
         const decodedUser = jwt_decode(jwt);
         setUser(decodedUser);
@@ -28,7 +28,7 @@ function App() {
 
   async function deleteCourse(pk){
 
-    let response = await axios.delete(`http://127.0.0.1:8000/api/course/delete/${pk}`)
+    let response = await axios.delete(`http://127.0.0.1:8000/api/course/delete/${pk}`, {headers: {Authorization: 'Bearer ' + jwt}});
     if(response.status ===204){
       getAllCourses();
     }
@@ -46,6 +46,7 @@ function App() {
 
     let response = await axios.post('http://127.0.0.1:8000/api/course/', newCourse, {headers: {Authorization: 'Bearer ' + jwt}});
     if(response.status ===201){
+      window.location = '/courses'
       await getAllCourses();
     }
   }
@@ -63,6 +64,7 @@ function App() {
           <Route path="/register" element={<RegistrationForm />}/>
           <Route path="/login" element={<LoginForm />}/>
           <Route path="/courses" element={<DisplayCourse course={course} getAllCourses={getAllCourses} updateCourse={updateCourse} deleteCourse={deleteCourse} />} />
+          <Route path="/addcourse" element={<CourseForm createCourse={createCourse}/>}/>
         </Routes>
         
         
