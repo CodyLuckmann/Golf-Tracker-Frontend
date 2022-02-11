@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import UpdateCourse from "../UpdateCourse/UpdateCourse";
 import SearchBar from '../SearchBar/SearchBar';
+import NineHoleForm from "../NineHoleForm/NineHoleForm";
 
 
 
@@ -15,16 +16,12 @@ const DisplayCourse = (props) => {
     }
 
     useEffect(() =>{
-        console.log("useEffect")
         setCourse(props.course)
       },[]);
     
 
     function filterCourses(searchTerm){
-        console.log('props.course', props.course)
-        console.log('course', course)
         let foundCourses = props.course.filter(function(element){
-            console.log('element', element)
           if(searchTerm == ''){
             return course
           }
@@ -33,7 +30,6 @@ const DisplayCourse = (props) => {
           }
     
         })
-        console.log('found', foundCourses)
         setCourse(foundCourses)
       }
 
@@ -61,6 +57,7 @@ const DisplayCourse = (props) => {
                         <td>{course.eighteen_hole_par}</td>
                         <button onClick={()=>showEdit(course)}>Edit Course</button>
                         {/* <button onClick={()=>props.deleteCourse(course.id)}>Delete</button> */}
+                        <button onClick={()=>props.createPlayedHole(course.id)}>Add 9-Hole Round</button>
                     </tr>
                     );
                 })}
