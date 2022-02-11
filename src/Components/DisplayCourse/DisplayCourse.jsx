@@ -1,5 +1,6 @@
 import { useState } from "react";
 import UpdateCourse from "../UpdateCourse/UpdateCourse";
+import SearchBar from '../SearchBar/SearchBar';
 
 
 
@@ -13,9 +14,23 @@ const DisplayCourse = (props) => {
         setEdit(true)
     }
 
+    function filterCourses(searchTerm){
+        let foundCourses = props.course.filter(function(element){
+          if(searchTerm == ''){
+            return course
+          }
+          else if (course.zip_code.includes(searchTerm)){
+            return true
+          }
+    
+        })
+        setCourse(foundCourses)
+      }
+
     return (
         <>
-        <table className="table">
+        <SearchBar filterCourses={filterCourses}/>
+        <table>
             <thead>Courses 
             <tr>
                 <th>Course</th>
