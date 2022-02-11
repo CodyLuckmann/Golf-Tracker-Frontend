@@ -8,7 +8,7 @@ const UpdateCourse = (props) => {
     const [eighteenHolePar, setEighteenHolePar] = useState(props.course.eighteen_hole_par);
 
     function handleSubmit(formEvent){
-        formEvent.preventDefault();
+        // formEvent.preventDefault();
         let updatedCourse = {
             name: name,
             city: city,
