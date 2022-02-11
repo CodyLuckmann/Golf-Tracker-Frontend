@@ -8,7 +8,7 @@ const CourseForm = (props) => {
     const [eighteenHolePar, setEighteenHolePar] = useState('');
 
     function handleSubmit(formEvent){
-        formEvent.preventDefault();
+        // formEvent.preventDefault();
         let newCourse = {
             name: name,
             city: city,
