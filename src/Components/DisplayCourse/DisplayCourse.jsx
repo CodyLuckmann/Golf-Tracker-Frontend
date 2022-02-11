@@ -34,7 +34,7 @@ const DisplayCourse = (props) => {
                         <td>{course.zip_code}</td>
                         <td>{course.nine_hole_par}</td>
                         <td>{course.eighteen_hole_par}</td>
-                        <button onClick={()=>showEdit(course)}>Edit</button>
+                        <button onClick={()=>showEdit(course)}>Edit Course</button>
                         <button onClick={()=>props.deleteCourse(course.id)}>Delete</button>
                     </tr>
                     );
