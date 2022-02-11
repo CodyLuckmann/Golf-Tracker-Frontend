@@ -12,7 +12,7 @@ function NavBar({user}) {
 
     return(
         <div>
-            {user && <h2>Welcome to Golf Tracker!</h2>}
+            {/* {user && <h2>Welcome to Golf Tracker!</h2>} */}
             <ul>
                 <li>
                     <Link to='/'>Home</Link>
@@ -39,6 +39,7 @@ function NavBar({user}) {
                     </React.Fragment>    
                 }
             </ul>
+            {user && <h2>Welcome to Golf Tracker!</h2>}
         </div>
     );
 };
