@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import UpdateCourse from "../UpdateCourse/UpdateCourse";
 import SearchBar from '../SearchBar/SearchBar';
 
@@ -7,23 +7,33 @@ import SearchBar from '../SearchBar/SearchBar';
 
 const DisplayCourse = (props) => {
     const [edit, setEdit] = useState(false)
-    const [course, setCourse] = useState('')
+    const [course, setCourse] = useState([])
 
     const showEdit =(courseToUpdate)=>{
         setCourse(courseToUpdate)
         setEdit(true)
     }
 
+    useEffect(() =>{
+        console.log("useEffect")
+        setCourse(props.course)
+      },[]);
+    
+
     function filterCourses(searchTerm){
+        console.log('props.course', props.course)
+        console.log('course', course)
         let foundCourses = props.course.filter(function(element){
+            console.log('element', element)
           if(searchTerm == ''){
             return course
           }
-          else if (course.zip_code.includes(searchTerm)){
+          else if (element.zip_code == searchTerm){
             return true
           }
     
         })
+        console.log('found', foundCourses)
         setCourse(foundCourses)
       }
 
@@ -41,7 +51,7 @@ const DisplayCourse = (props) => {
             </tr>
             </thead>
             <tbody>
-                {props.course.map((course) =>{
+                {course.map((course) =>{
                     return(
                     <tr>
                         <td>{course.name}</td>
@@ -50,7 +60,7 @@ const DisplayCourse = (props) => {
                         <td>{course.nine_hole_par}</td>
                         <td>{course.eighteen_hole_par}</td>
                         <button onClick={()=>showEdit(course)}>Edit Course</button>
-                        <button onClick={()=>props.deleteCourse(course.id)}>Delete</button>
+                        {/* <button onClick={()=>props.deleteCourse(course.id)}>Delete</button> */}
                     </tr>
                     );
                 })}
