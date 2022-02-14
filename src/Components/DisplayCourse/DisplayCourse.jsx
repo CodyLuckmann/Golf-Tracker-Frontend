@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import UpdateCourse from "../UpdateCourse/UpdateCourse";
 import SearchBar from '../SearchBar/SearchBar';
-import NineHoleForm from "../NineHoleForm/NineHoleForm";
+import NineHoleForm from "../AddHoleForm/AddHoleForm";
 import { Link } from "react-router-dom";
 
 
@@ -60,7 +60,8 @@ const DisplayCourse = (props) => {
                         <td>{course.eighteen_hole_par}</td>
                         {/* <button onClick={()=>showEdit(course)}>Edit Course</button> */}
                         {/* <button onClick={()=>props.deleteCourse(course.id)}>Delete</button> */}
-                        <Link to='/addhole'><button> Add Hole</button></Link> 
+                        <Link to='/addhalfround'><button> Add 9 Hole Round</button></Link> 
+                        <Link to='/addfullround'><button> Add 18 Hole Round</button></Link> 
                     </tr>
                     );
                 })}
