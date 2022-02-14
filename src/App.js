@@ -7,7 +7,8 @@ import NavBar from './Components/NavBar/NavBar';
 import jwt_decode from 'jwt-decode';
 import DisplayCourse from './Components/DisplayCourse/DisplayCourse';
 import CourseForm from './Components/CreateCourse/CreateCourse';
-import NineHoleForm from './Components/NineHoleForm/NineHoleForm';
+import AddHoleForm from './Components/AddHoleForm/AddHoleForm';
+import RoundForm from './Components/RoundForm/RoundForm';
 
 
 
@@ -53,13 +54,13 @@ function App() {
     }
   }
 
-  async function createPlayedHole(newNine){
+  async function createPlayedHole(newHole){
     console.log('inside this function')
 
-    let response = await axios.post('http://127.0.0.1:8000/api/playedhole/', newNine, {headers: {Authorization: 'Bearer ' + jwt}});
+    let response = await axios.post('http://127.0.0.1:8000/api/playedhole/', newHole, {headers: {Authorization: 'Bearer ' + jwt}});
     console.log(response)
     if(response.status === 201){
-      window.location = '/courses'
+      //window.location = '/courses'
     }
   }
 
@@ -76,7 +77,9 @@ function App() {
           <Route path="/register" element={<RegistrationForm />}/>
           <Route path="/login" element={<LoginForm />}/>
           <Route path="/courses" element={<DisplayCourse course={course} getAllCourses={getAllCourses} />} />
-          <Route path="/addhole" element={<NineHoleForm createPlayedHole={createPlayedHole} />}/> 
+          <Route path="/addhole" element={<AddHoleForm createPlayedHole={createPlayedHole} />}/>
+          <Route path='/addhalfround' element={<RoundForm numOfHoles={10} createPlayedHole={createPlayedHole} />}/>
+          <Route path='/addfullround' element={<RoundForm numOfHoles={19} createPlayedHole={createPlayedHole} />}/>
           <Route path="/addcourse" element={<CourseForm createCourse={createCourse}/>}/>
         </Routes>
         
