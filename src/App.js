@@ -76,7 +76,7 @@ function App() {
           <Route path="/register" element={<RegistrationForm />}/>
           <Route path="/login" element={<LoginForm />}/>
           <Route path="/courses" element={<DisplayCourse course={course} getAllCourses={getAllCourses} />} />
-          <Route path="/addhole" element={<NineHoleForm createPlayedHole={createPlayedHole} course={course}/>}/> 
+          <Route path="/addhole" element={<NineHoleForm createPlayedHole={createPlayedHole} />}/> 
           <Route path="/addcourse" element={<CourseForm createCourse={createCourse}/>}/>
         </Routes>
         
