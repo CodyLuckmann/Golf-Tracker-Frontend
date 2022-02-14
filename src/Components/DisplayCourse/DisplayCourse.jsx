@@ -40,6 +40,7 @@ const DisplayCourse = (props) => {
         <table>
             <thead>Courses 
             <tr>
+                <th>Course ID</th>
                 <th>Course</th>
                 <th>City</th>
                 <th>Zip Code</th>
@@ -51,6 +52,7 @@ const DisplayCourse = (props) => {
                 {course.map((course) =>{
                     return(
                     <tr>
+                        <td>{course.id}</td>
                         <td>{course.name}</td>
                         <td>{course.city}</td>
                         <td>{course.zip_code}</td>
