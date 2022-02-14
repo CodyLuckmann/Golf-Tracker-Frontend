@@ -11,6 +11,7 @@ import NineHoleForm from './Components/NineHoleForm/NineHoleForm';
 
 
 
+
 function App() {
 
   const [course, setCourses] = useState([]);
@@ -52,7 +53,7 @@ function App() {
     }
   }
 
-  async function createPlayedHole(pk, newNine){
+  async function createPlayedHole(newNine){
     console.log('inside this function')
 
     let response = await axios.post('http://127.0.0.1:8000/api/playedhole/', newNine, {headers: {Authorization: 'Bearer ' + jwt}});
@@ -75,7 +76,7 @@ function App() {
           <Route path="/register" element={<RegistrationForm />}/>
           <Route path="/login" element={<LoginForm />}/>
           <Route path="/courses" element={<DisplayCourse course={course} getAllCourses={getAllCourses} />} />
-          <Route path="/addhole" element={<NineHoleForm createPlayedHole={createPlayedHole}/>}/> 
+          <Route path="/addhole" element={<NineHoleForm createPlayedHole={createPlayedHole} course={course}/>}/> 
           <Route path="/addcourse" element={<CourseForm createCourse={createCourse}/>}/>
         </Routes>
         
