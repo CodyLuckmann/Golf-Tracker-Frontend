@@ -15,7 +15,7 @@ const NineHoleForm = (props) => {
     function handleSubmit(formEvent){
         formEvent.preventDefault();
         let newNine = {
-            user: user,
+            user: props.user_id,
             course: course,
             date: date,
             hole: hole,
@@ -25,13 +25,12 @@ const NineHoleForm = (props) => {
             driver_distance: driverDistance,
             fairway: fairway,
         }
-        props.createNine(newNine);
+        props.createPlayedHole(newNine);
     }
 
     return (
         <form onSubmit={handleSubmit}>
-            <label>User</label>
-            <input type='text' onChange={(event) => setUser(event.target.value)} value={user}/>
+            
 
             <label>Course</label>
             <input type='text' onChange={(event) => setCourse(event.target.value)} value={course}/>
