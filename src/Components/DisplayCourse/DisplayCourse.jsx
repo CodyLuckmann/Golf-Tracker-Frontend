@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import UpdateCourse from "../UpdateCourse/UpdateCourse";
 import SearchBar from '../SearchBar/SearchBar';
 import NineHoleForm from "../AddHoleForm/AddHoleForm";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 
@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 const DisplayCourse = (props) => {
     const [edit, setEdit] = useState(false)
     const [course, setCourse] = useState([])
-
+    const navigate = useNavigate()
     const showEdit =(courseToUpdate)=>{
         setCourse(courseToUpdate)
         setEdit(true)
@@ -33,6 +33,11 @@ const DisplayCourse = (props) => {
     
         })
         setCourse(foundCourses)
+      }
+
+      function viewCourse(course){
+        props.getSelectedCourse(course)
+        navigate('/chart')
       }
 
     return (
@@ -63,7 +68,7 @@ const DisplayCourse = (props) => {
                         {/* <button onClick={()=>props.deleteCourse(course.id)}>Delete</button> */}
                         <Link to='/addhalfround'><button> Add 9 Hole Round</button></Link> 
                         <Link to='/addfullround'><button> Add 18 Hole Round</button></Link> 
-                        <Link to='/chart'><button >See Chart Data</button></Link>
+                        <button onClick={()=> viewCourse(course)}>See Chart Data</button>
                     </tr>
                     );
                 })}
