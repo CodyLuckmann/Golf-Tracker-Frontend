@@ -16,6 +16,7 @@ import RoundChartTracker from './Components/RoundChartTracker/RoundChartTracker'
 
 function App() {
 
+  const [selectedCourse, setSelectedCourse] = useState('');
   const [course, setCourses] = useState([]);
   const [holes, setHoles] = useState([]);
   const [putts, setPutts] = useState([]);
@@ -85,13 +86,10 @@ function App() {
     console.log(response.data);
 
   }
-  // async function getTotalStrokes(course, date){
-
-  //   let response = await axios.get(`http://127.0.0.1:8000/api/playedhole/date/${course}/${date}/`, {headers: {Authorization: 'Bearer ' + jwt}});
-  //   setTotals(response.data);
-  //   console.log(response.data);
-
-  // }
+  
+  function getSelectedCourse(course){
+    setSelectedCourse(course)
+  }
  
 
 
@@ -102,12 +100,12 @@ function App() {
         <Routes>
           <Route path="/register" element={<RegistrationForm />}/>
           <Route path="/login" element={<LoginForm />}/>
-          <Route path="/courses" element={<DisplayCourse course={course} getAllCourses={getAllCourses} />} />
+          <Route path="/courses" element={<DisplayCourse getSelectedCourse={getSelectedCourse} course={course} getAllCourses={getAllCourses} />} />
           <Route path="/addhole" element={<AddHoleForm createPlayedHole={createPlayedHole} />}/>
           <Route path='/addhalfround' element={<RoundForm numOfHoles={10} createPlayedHole={createPlayedHole} />}/>
           <Route path='/addfullround' element={<RoundForm numOfHoles={19} createPlayedHole={createPlayedHole} />}/>
           <Route path="/addcourse" element={<CourseForm createCourse={createCourse}/>}/>
-          <Route path="/chart" element={<RoundChartTracker   />}/>
+          <Route path="/chart" element={<RoundChartTracker selectedCourse={selectedCourse}  />}/>
 
         </Routes>
         
