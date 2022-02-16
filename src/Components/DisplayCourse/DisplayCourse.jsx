@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 
 
 
+
 const DisplayCourse = (props) => {
     const [edit, setEdit] = useState(false)
     const [course, setCourse] = useState([])
@@ -37,7 +38,7 @@ const DisplayCourse = (props) => {
     return (
         <>
         <SearchBar filterCourses={filterCourses}/>
-        <table>
+        <table >
             <thead>Courses 
             <tr>
                 <th>Course ID</th>
@@ -62,6 +63,7 @@ const DisplayCourse = (props) => {
                         {/* <button onClick={()=>props.deleteCourse(course.id)}>Delete</button> */}
                         <Link to='/addhalfround'><button> Add 9 Hole Round</button></Link> 
                         <Link to='/addfullround'><button> Add 18 Hole Round</button></Link> 
+                        <Link to='/chart'><button >See Chart Data</button></Link>
                     </tr>
                     );
                 })}
