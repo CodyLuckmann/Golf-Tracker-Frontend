@@ -9,6 +9,7 @@ import DisplayCourse from './Components/DisplayCourse/DisplayCourse';
 import CourseForm from './Components/CreateCourse/CreateCourse';
 import AddHoleForm from './Components/AddHoleForm/AddHoleForm';
 import RoundForm from './Components/RoundForm/RoundForm';
+import RoundChartTracker from './Components/RoundChartTracker/RoundChartTracker';
 
 
 
@@ -16,12 +17,15 @@ import RoundForm from './Components/RoundForm/RoundForm';
 function App() {
 
   const [course, setCourses] = useState([]);
+  const [holes, setHoles] = useState([]);
+  const [putts, setPutts] = useState([]);
   const jwt = localStorage.getItem('token');
 
   const [user, setUser] = useState(null);
   
   useEffect(() =>{
-    getAllCourses()
+    getAllCourses();
+    getAllHoles();
 
       try{
         const decodedUser = jwt_decode(jwt);
@@ -29,6 +33,10 @@ function App() {
       } catch {}
   },[]);
 
+  
+
+  
+  
   async function deleteCourse(pk){
 
     let response = await axios.delete(`http://127.0.0.1:8000/api/course/delete/${pk}`, {headers: {Authorization: 'Bearer ' + jwt}});
@@ -69,6 +77,24 @@ function App() {
     let response = await axios.get('http://127.0.0.1:8000/api/course/all/');
     setCourses(response.data);
   }
+
+  async function getAllHoles(){
+
+    let response = await axios.get('http://127.0.0.1:8000/api/playedhole/all/', {headers: {Authorization: 'Bearer ' + jwt}});
+    setHoles(response.data);
+    console.log(response.data);
+
+  }
+  // async function getTotalStrokes(course, date){
+
+  //   let response = await axios.get(`http://127.0.0.1:8000/api/playedhole/date/${course}/${date}/`, {headers: {Authorization: 'Bearer ' + jwt}});
+  //   setTotals(response.data);
+  //   console.log(response.data);
+
+  // }
+ 
+
+
   return (
     <div>
       <Router>
@@ -81,6 +107,8 @@ function App() {
           <Route path='/addhalfround' element={<RoundForm numOfHoles={10} createPlayedHole={createPlayedHole} />}/>
           <Route path='/addfullround' element={<RoundForm numOfHoles={19} createPlayedHole={createPlayedHole} />}/>
           <Route path="/addcourse" element={<CourseForm createCourse={createCourse}/>}/>
+          <Route path="/chart" element={<RoundChartTracker   />}/>
+
         </Routes>
         
         
