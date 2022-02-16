@@ -11,11 +11,14 @@ const RoundChartTracker = (props) => {
     const [totals, setTotals] = useState([]);
 
     useEffect(() => {
-        getTotalsForCourse(1);
-        something()
+        // getTotalsForCourse(props.selectedCourse.id);
+        // something()
         
-        
-      },[]);
+        if (props.selectedCourse){
+            getTotalsForCourse(props.selectedCourse.id);
+            something();
+        }
+      },[props.selectedCourse]);
     
     
     async function getTotalsForCourse(course_id){
@@ -26,38 +29,42 @@ const RoundChartTracker = (props) => {
     
     }
 
+
     const something = () => {
         let chartArray = []
-        let headingsArray = ["Date", "Total Strokes"]
-        chartArray[0] = headingsArray
+        // let headingsArray = ["Date", "Total Strokes"]
+        // chartArray[0] = headingsArray
+        for (let i =0; i<totals.length; i++){
+            chartArray.push([totals[i].date, totals[i].strokes__sum])
+            
+        }
  
-        // i , 1 -> length of totals i++
-            // tempArray = []
-            // tempArry[0]=date,  1 strokes
-            // charArray[i] = temp array
+        
 
-        console.log("Chart Array: ", chartArray) // [['Date", "Total Strokes"]]
-
-        // for loop process totals array
-            // using spread operator append the current rows array to the master array
+        console.log("Chart Array: ", chartArray) 
+        setChartData(chartArray)
+        
     }
-    let tempChartData = totals.map(entry =>{
-        return [entry.date, entry.strokes__sum];
-    });
-    console.log("chartData: ", tempChartData)
-    // setChartData(tempChartData);
+   
+    
+    
+    if (chartData){
 
+
+    
     return(
         
         <Chart
         chartType="Line"
-        data={[["Date", "Total Strokes"],[],[],[]]}
+        data={[["Date", "Total Strokes"], ...chartData]}
         width="100%"
         height="400px"
         legendToggle
         />
         
-    );
+    )}else{
+        return <p>Loading</p>
+    };
 }
 
 export default RoundChartTracker;
