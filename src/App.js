@@ -10,6 +10,7 @@ import CourseForm from './Components/CreateCourse/CreateCourse';
 import AddHoleForm from './Components/AddHoleForm/AddHoleForm';
 import RoundForm from './Components/RoundForm/RoundForm';
 import RoundChartTracker from './Components/RoundChartTracker/RoundChartTracker';
+import PuttChartTracker from './Components/PuttChartTracker/PuttChartTracker';
 
 
 
@@ -106,7 +107,7 @@ function App() {
           <Route path='/addfullround' element={<RoundForm numOfHoles={19} createPlayedHole={createPlayedHole} />}/>
           <Route path="/addcourse" element={<CourseForm createCourse={createCourse}/>}/>
           <Route path="/chart" element={<RoundChartTracker selectedCourse={selectedCourse}  />}/>
-
+          <Route path="/puttchart" element={<PuttChartTracker selectedCourse={selectedCourse}/>}/>
         </Routes>
         
         
