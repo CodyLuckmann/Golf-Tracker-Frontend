@@ -16,9 +16,15 @@ const RoundChartTracker = (props) => {
         
         if (props.selectedCourse){
             getTotalsForCourse(props.selectedCourse.id);
-            something();
+            
         }
       },[props.selectedCourse]);
+
+      useEffect(() => {
+          if(totals && totals.length > 0){
+              something();
+          }
+      },[totals]);
     
     
     async function getTotalsForCourse(course_id){
@@ -50,7 +56,6 @@ const RoundChartTracker = (props) => {
     
     if (chartData){
 
-
     
     return(
         
@@ -62,7 +67,8 @@ const RoundChartTracker = (props) => {
         legendToggle
         />
         
-    )}else{
+    )}else {
+        
         return <p>Loading</p>
     };
 }
