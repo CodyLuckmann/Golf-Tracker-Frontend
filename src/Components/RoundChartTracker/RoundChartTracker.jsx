@@ -11,8 +11,7 @@ const RoundChartTracker = (props) => {
     const [totals, setTotals] = useState([]);
 
     useEffect(() => {
-        // getTotalsForCourse(props.selectedCourse.id);
-        // something()
+        
         
         if (props.selectedCourse){
             getTotalsForCourse(props.selectedCourse.id);
@@ -22,7 +21,8 @@ const RoundChartTracker = (props) => {
 
       useEffect(() => {
           if(totals && totals.length > 0){
-              something();
+              roundTotals();
+            
           }
       },[totals]);
     
@@ -36,23 +36,22 @@ const RoundChartTracker = (props) => {
     }
 
 
-    const something = () => {
+    const roundTotals = () => {
         let chartArray = []
-        // let headingsArray = ["Date", "Total Strokes"]
-        // chartArray[0] = headingsArray
+        
+       
         for (let i =0; i<totals.length; i++){
             chartArray.push([totals[i].date, totals[i].strokes__sum])
+
             
         }
- 
-        
+
+       
 
         console.log("Chart Array: ", chartArray) 
         setChartData(chartArray)
         
-    }
-   
-    
+    }    
     
     if (chartData){
 
