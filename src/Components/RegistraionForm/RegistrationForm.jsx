@@ -53,9 +53,9 @@ const RegistrationForm = (props) => {
     };
 
     return (
-        <div>
+        <div className="padding">
             <div>
-                <h1>User Registration</h1>
+                <h1 style={{textAlign:"left"}}>User Registration</h1>
             </div>
             <form>
                 <label>Username</label>
