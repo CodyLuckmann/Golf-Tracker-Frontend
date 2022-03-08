@@ -3,3 +3,9 @@ input[type=text] {
     margin-left: 10px;
     margin-right: 10px; 
   }
+
+
+  .padding{
+    padding-left: 10em;
+    padding-right: 10em;
+  }

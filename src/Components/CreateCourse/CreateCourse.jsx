@@ -22,7 +22,7 @@ const CourseForm = (props) => {
     }
 
     return(
-        <form onSubmit={handleSubmit}>
+        <form className="padding" onSubmit={handleSubmit}>
             <label>Name</label>
             <input type='text' onChange={(event) => setName(event.target.value)} value={name}/>
             <label>City</label>
