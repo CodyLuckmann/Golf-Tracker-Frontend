@@ -22,6 +22,10 @@ const CourseForm = (props) => {
     }
 
     return(
+        <div>
+        <h1 style={{textAlign:"center"}}> Add New Course</h1>
+        
+
         <form className="padding" onSubmit={handleSubmit}>
             <label>Name</label>
             <input type='text' onChange={(event) => setName(event.target.value)} value={name}/>
@@ -36,6 +40,7 @@ const CourseForm = (props) => {
             <button type='submit'>Create Course</button>
 
         </form>
+        </div>
     );
 }
 
