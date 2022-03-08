@@ -30,11 +30,11 @@ const LoginForm = (props) => {
     };
 
     return (
-        <div>
+        <div className='padding' >
             <div>
-                <h1>Login</h1>
+            <h1 style={{textAlign:"left"}}> Login</h1>
             </div>
-            <form>
+            <form >
                 <label>Username</label>
                 <input onChange={handleUserName}
                 value={username} type='text' />
