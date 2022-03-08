@@ -29,7 +29,7 @@ const AddHoleForm = (props) => {
     
 
     return (
-        <form onSubmit={handleSubmit}> 
+        <form className="padding" onSubmit={handleSubmit}> 
             
             <p>{props.hole}</p>
 
