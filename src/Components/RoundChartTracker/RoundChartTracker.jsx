@@ -58,7 +58,7 @@ const RoundChartTracker = (props) => {
     
     return(
         
-        <Chart
+        <Chart className='padding'
         chartType="Line"
         data={[["Date", "Total Strokes"], ...chartData]}
         width="100%"
