@@ -8,7 +8,7 @@ const AddHoleForm = (props) => {
     const [par, setPar] = useState('');
     const [strokes, setStrokes] = useState('');
     const [putts, setPutts] = useState('');
-    const [driverDistance, setDriverDistance] = useState('');
+    const [driverDistance, setDriverDistance] = useState('0');
     const [fairway, setFairway] = useState(false);
 
     const handleSubmit = (e) => {
