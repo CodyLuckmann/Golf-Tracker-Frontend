@@ -23,6 +23,7 @@ const RoundForm = (props) =>{
 
     return(
         <div>
+            <h1 style={{textAlign:'center'}}>Add New Round</h1> 
             {buildForms()} 
         </div>
         
