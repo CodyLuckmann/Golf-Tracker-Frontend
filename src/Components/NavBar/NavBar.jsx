@@ -41,7 +41,7 @@ function NavBar({user}) {
                 }
             </ul>
             <h1 style={{textAlign:"center"}}> Golf Tracker Home Page</h1>
-            <h2 style={{textAlign:"center"}}> Play a Round, Track Your'e Score, Improve Your Game!</h2>
+            <h2 style={{textAlign:"center"}}> Play a Round, Track Your Score, Improve Your Game!</h2>
             <h3 style={{textAlign:"center"}}> Register or Login at the Top to Start</h3>
             {user && <h2 style={{textAlign:"center"}}>Welcome to Golf Tracker!</h2>}
         </div>
